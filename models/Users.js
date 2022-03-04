@@ -1,6 +1,6 @@
 const { Schema, model } = require('mongoose');
 const { stringify } = require('querystring');
-const dateFormat = require('../utils/dataFormat');
+const dateFormat = require('../utils/dateFormat');
 
 const UserSchema = new Schema({
 
