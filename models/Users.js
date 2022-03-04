@@ -4,7 +4,7 @@ const dateFormat = require('../utils/dataFormat');
 
 const UserSchema = new Schema({
 
-    userName: {
+    username: {
         type: String,
         unique: true,
         required: true,
@@ -14,19 +14,19 @@ const UserSchema = new Schema({
         type: String,
         unique: true,
         required: true,
-        validate: [validateEmail, 'Please fill a valid email address'],
-        match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, 'Please fill a valid email address']
+        // validate: [validateEmail, 'Please fill a valid email address'],
+        // match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, 'Please fill a valid email address']
     },
-    thoughts: [
-        {
-            type: Schema.Types.ObjectId,
-            ref: ''
-        }
-    ]
+    // thoughts: [
+    //     {
+    //         type: Schema.Types.ObjectId,
+    //         ref: ''
+    //     }
+    // ]
 })
 // create the User model using the UserSchema
 const User = model('User', UserSchema);
 
 
-// export the Pizza model
+// export the User model
 module.exports = User;
