@@ -2,6 +2,8 @@ const { Schema, model } = require('mongoose');
 const { stringify } = require('querystring');
 const dateFormat = require('../utils/dateFormat');
 
+
+
 const UserSchema = new Schema(
     {
         username: {
@@ -38,6 +40,11 @@ const UserSchema = new Schema(
         id: false
     }
 );
+
+// get total count of friends on retrieval
+UserSchema.virtual('friendCount').get(function () {
+    return this.friends.reduce((total, friend) => total + friend.length + 1, 0);
+});
 
 // create the User model using the UserSchema
 const User = model('User', UserSchema);

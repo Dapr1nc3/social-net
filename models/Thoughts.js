@@ -48,15 +48,21 @@ const ThoughtSchema = new Schema({
     },
     reactions: [reactionSchema]
 },
-    // {
-    //     toJSON: {
-    //         virtuals: true,
-    //         getters: true
-    //     },
-    //     id: false
-    // }
+    {
+        toJSON: {
+            virtuals: true,
+            getters: true
+        },
+        id: false
+    }
 );
 
+// get total count of thoughts on retrieval
+reactionSchema.virtual('reactionCount').get(function () {
+    return this.reactions.length;
+});
+
+// create the Thoughts model using the ThoughtsSchema
 const Thoughts = model('Thoughts', ThoughtSchema);
 
 module.exports = Thoughts; 
